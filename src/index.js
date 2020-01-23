@@ -7,7 +7,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from "./store/reducers/rootReducer";
+import rootReducer from "./store/rootReducer";
 
 //create store and connect redux to redux-devtools
 let store;

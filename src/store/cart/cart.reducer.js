@@ -1,9 +1,5 @@
-import {
-  TOGGLE_CART_HIDDEN,
-  ADD_ITEM,
-  REMOVE_ITEM
-} from "../actions/actionTypes";
-import { addToCart } from "../utils/cart.utils";
+import { TOGGLE_CART_HIDDEN, ADD_ITEM, REMOVE_ITEM } from "./cart.types";
+import { addToCart } from "./cart.utils";
 const initState = {
   hidden: false,
   cartItems: []

@@ -1,4 +1,4 @@
-import { TOGGLE_CART_HIDDEN, ADD_ITEM, REMOVE_ITEM } from "./actionTypes";
+import { TOGGLE_CART_HIDDEN, ADD_ITEM, REMOVE_ITEM } from "./cart.types";
 
 //set currentUser
 export const toggleCartHidden = () => ({
