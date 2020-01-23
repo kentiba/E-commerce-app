@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import "./header.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
-import Cart from "../cart-dropdown/cart-dropdown.component";
+import CartDropDown from "../cart-dropdown/cart-dropdown.component";
 
 const Header = ({ currentUser, hidden }) => {
   return (
@@ -34,7 +34,7 @@ const Header = ({ currentUser, hidden }) => {
         )}
         <CartIcon />
       </div>
-      {hidden ? <Cart /> : null}
+      {hidden ? <CartDropDown /> : null}
     </div>
   );
 };
