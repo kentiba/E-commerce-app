@@ -7,6 +7,9 @@ import { connect } from "react-redux";
 import "./header.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropDown from "../cart-dropdown/cart-dropdown.component";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../store/user/user.selectors";
+import { selectCartHidden } from "../../store/cart/cart.selectors";
 
 const Header = ({ currentUser, hidden }) => {
   return (
@@ -39,9 +42,10 @@ const Header = ({ currentUser, hidden }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser,
-  hidden: state.cart.hidden
+// createStructuredSelectors will take the state and pass it to every child , we dont have to write it
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
 });
 
 export default connect(mapStateToProps)(Header);
