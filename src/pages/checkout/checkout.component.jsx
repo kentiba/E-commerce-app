@@ -9,7 +9,6 @@ import {
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 const checkoutPage = ({ cartItems, totalPrice }) => {
-  console.log(totalPrice);
   return (
     <div className="checkout-page">
       <div className="checkout-header">
