@@ -13,6 +13,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./store/user/user.selectors";
 import "./App.css";
 import CheckoutPage from "./pages/checkout/checkout.component";
+import CollectionPage from "./pages/collection/collection.component";
 
 class App extends React.Component {
   unSubscribeFromAuth = null;
@@ -45,6 +46,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/shop/:collectionId" component={CollectionPage} />
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
