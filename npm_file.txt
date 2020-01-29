@@ -1,0 +1,6 @@
+-----HEROKU----
+
+heroku create (name of the project) --buildpack https://github.com/mars/create-react-app-buildpack.git
+
+npm push heroku master
+

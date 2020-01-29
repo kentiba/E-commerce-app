@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === "production") {
     )
   );
 }
+
 //redux-persist
 let persistor = persistStore(store);
 
