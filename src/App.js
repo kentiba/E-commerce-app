@@ -6,33 +6,49 @@ import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import SignupAndLogin from "./pages/signUp-login/signUp-login.component";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+  firestore,
+  convertCollectionsSnapShotToMap
+} from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./store/user/user.actions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./store/user/user.selectors";
+import { updateCollections } from "./store/shop/shop.actions";
 import "./App.css";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import CollectionPage from "./pages/collection/collection.component";
 
 class App extends React.Component {
   unSubscribeFromAuth = null;
-
+  unSubscribeFromSnap = null;
   componentDidMount() {
+    //// STORING USER AUTHENTICATION ////
+    const { setCurrentUser, updateCollections } = this.props;
     //auth.onauthstatachnage will return a function that when it gets called it will close the subscription
     this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
+        //onSnapshot will fire whenever there is a change in the data
         userRef.onSnapshot(snapShot => {
-          this.props.setCurrentUser({
+          setCurrentUser({
             id: snapShot.id,
             ...snapShot.data()
           });
         });
-      } else {
-        this.props.setCurrentUser(userAuth);
       }
+      setCurrentUser(userAuth);
+    });
+
+    //// IMPORTING COLLECTIONS FROM FIREBASE ////
+    //TODO : this should be moved to shop component of homepage
+    const collectionRef = firestore.collection("collections");
+    collectionRef.onSnapshot(async snapShot => {
+      const collectionMap = convertCollectionsSnapShotToMap(snapShot);
+      updateCollections(collectionMap);
     });
   }
 
@@ -66,7 +82,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+  updateCollections: collections => dispatch(updateCollections(collections))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
