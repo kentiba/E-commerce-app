@@ -4,14 +4,17 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCollectionForPreview } from "../../store/shop/shop.selectors";
 import "./collections-overview.styles.scss";
+import WithSpinner from "../with-spinner/with-spinner.component";
 
 const collectionsOverview = ({ collections }) => {
-  return (
+  return collections ? (
     <div className="collections-overview">
       {collections.map(({ id, ...otherCollectionProps }) => (
         <CollectionPreview key={id} {...otherCollectionProps} />
       ))}
     </div>
+  ) : (
+    <WithSpinner />
   );
 };
 

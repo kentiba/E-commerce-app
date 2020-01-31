@@ -1,6 +1,6 @@
 import { UPDATE_COLLECTIONS } from "./shop.types";
 const initState = {
-  collections: {}
+  collections: []
 };
 
 const shopReducer = (state = initState, action) => {

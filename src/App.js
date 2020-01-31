@@ -44,7 +44,7 @@ class App extends React.Component {
     });
 
     //// IMPORTING COLLECTIONS FROM FIREBASE ////
-    //TODO : this should be moved to shop component of homepage
+    //TODO : this should be moved to shop component or homepage
     const collectionRef = firestore.collection("collections");
     collectionRef.onSnapshot(async snapShot => {
       const collectionMap = convertCollectionsSnapShotToMap(snapShot);
