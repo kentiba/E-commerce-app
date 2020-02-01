@@ -17,24 +17,22 @@ class CollectionPage extends Component {
   render() {
     const { collection, isFetching, errorMessage } = this.props;
     console.log(collection, isFetching, errorMessage);
-    // eslint-disable-next-line no-lone-blocks
-    {
-      if (!isFetching && collection) {
-        return (
-          <div className="collection-page">
-            <h2 className="title">{collection.title}</h2>
-            <div className="items">
-              {collection.items.map(item => (
-                <CollectionItem key={item.id} item={item} />
-              ))}
-            </div>
+
+    if (!isFetching && collection) {
+      return (
+        <div className="collection-page">
+          <h2 className="title">{collection.title}</h2>
+          <div className="items">
+            {collection.items.map(item => (
+              <CollectionItem key={item.id} item={item} />
+            ))}
           </div>
-        );
-      } else if (errorMessage) {
-        return <p>Error: {errorMessage}</p>;
-      } else {
-        return <WithSpinner />;
-      }
+        </div>
+      );
+    } else if (errorMessage) {
+      return <p>Error: {errorMessage}</p>;
+    } else {
+      return <WithSpinner />;
     }
   }
 }
