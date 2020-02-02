@@ -17,25 +17,24 @@ import "./App.css";
 
 class App extends React.Component {
   unSubscribeFromAuth = null;
-  unSubscribeFromSnap = null;
   componentDidMount() {
     //// STORING USER AUTHENTICATION ////
     const { setCurrentUser } = this.props;
     //auth.onauthstatachnage will return a function that when it gets called it will close the subscription
-    this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+    // this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
 
-        //onSnapshot will fire whenever there is a change in the data
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-      }
-      setCurrentUser(userAuth);
-    });
+    //     //onSnapshot will fire whenever there is a change in the data
+    //     userRef.onSnapshot(snapShot => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data()
+    //       });
+    //     });
+    //   }
+    //   setCurrentUser(userAuth);
+    // });
   }
 
   componentWillMount() {

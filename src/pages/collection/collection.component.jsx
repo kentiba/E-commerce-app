@@ -8,11 +8,11 @@ import {
 import CollectionItem from "../../components/collection-item/collection-item.component";
 import WithSpinner from "../../components/with-spinner/with-spinner.component";
 import "./collection.styles.scss";
-import { fetchCollectionStartAsync } from "../../store/shop/shop.actions";
+import { fetchCollectionStart } from "../../store/shop/shop.actions";
 
 class CollectionPage extends Component {
   componentDidMount() {
-    this.props.fetchCollectionStartAsync();
+    this.props.fetchCollectionStart();
   }
   render() {
     const { collection, isFetching, errorMessage } = this.props;
@@ -43,7 +43,7 @@ const mapStateToProps = (state, ownProps) => ({
   isFetching: isFetching(state)
 });
 const mapDispatchToProps = dispatch => ({
-  fetchCollectionStartAsync: () => dispatch(fetchCollectionStartAsync())
+  fetchCollectionStart: () => dispatch(fetchCollectionStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionPage);
