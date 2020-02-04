@@ -11,9 +11,14 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./store/user/user.selectors";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import CollectionPage from "./pages/collection/collection.component";
+import { checkUserSession } from "./store/user/user.actions";
 import "./App.css";
 
 class App extends React.Component {
+  componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
+  }
   render() {
     return (
       <div>
@@ -40,4 +45,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

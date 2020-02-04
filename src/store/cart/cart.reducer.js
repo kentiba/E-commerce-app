@@ -2,7 +2,8 @@ import {
   TOGGLE_CART_HIDDEN,
   ADD_ITEM,
   CLEAR_ITEM_FROM_CART,
-  REMOVE_ITEM
+  REMOVE_ITEM,
+  CLEAR_CART
 } from "./cart.types";
 import { addToCart, removeFromCart } from "./cart.utils";
 const initState = {
@@ -36,6 +37,11 @@ const cartReducer = (state = initState, action) => {
       return {
         ...state,
         cartItems: removeFromCart(state.cartItems, action.payload)
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartItems: []
       };
     default:
       return state;
