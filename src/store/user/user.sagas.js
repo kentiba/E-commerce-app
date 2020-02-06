@@ -85,7 +85,7 @@ export function* signUpUser({ payload: { email, password, displayName } }) {
   }
 }
 
-export function* signInAfterSignUP({ payload: { user, additionalData } }) {
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   try {
     yield getSnapShotFromUser(user, additionalData);
   } catch (err) {
@@ -114,7 +114,7 @@ export function* onSignUpStart() {
 }
 
 export function* onSignUpSuccess() {
-  yield takeLatest(SIGN_UP_SUCCESS, signInAfterSignUP);
+  yield takeLatest(SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
 export function* userSagas() {
