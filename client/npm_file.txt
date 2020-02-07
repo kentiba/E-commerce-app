@@ -4,3 +4,7 @@ heroku create (name of the project) --buildpack https://github.com/mars/create-r
 
 npm push heroku master
 
+
+-------package.json ----------
+"proxy": "http://localhost:5000",
+add this so react knows to which server it should request
