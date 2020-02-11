@@ -15,4 +15,4 @@ const cartItem = ({ item }) => {
   );
 };
 
-export default cartItem;
+export default React.memo(cartItem);
