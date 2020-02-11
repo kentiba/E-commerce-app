@@ -48,4 +48,21 @@
       width: 10%;
     }
   }
+  @media screen and (max-width: 800px) {
+    width: 70vw;
+    margin: 15px auto;
+
+    .custom-button {
+      display: block;
+    }
+
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      .custom-button {
+        opacity: unset;
+      }
+    }
+  }
 }

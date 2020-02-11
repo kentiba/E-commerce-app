@@ -5,6 +5,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 20px 60px;
 }
+@media screen and (max-width: 800px) {
+  body {
+    padding: 10px !important;
+  }
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
