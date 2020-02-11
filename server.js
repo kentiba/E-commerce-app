@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
+const compression = require("compression");
 
 //load .env in development
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
@@ -10,7 +11,8 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 
-//cors & body-parser
+//cors & body-parser & compression
+app.use(compression());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
