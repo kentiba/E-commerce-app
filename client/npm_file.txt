@@ -8,3 +8,9 @@ npm push heroku master
 -------package.json ----------
 "proxy": "http://localhost:5000",
 add this so react knows to which server it should request
+
+
+-----Progressive web app -------
+serviceWorker
+https -- npm install express-sslify
+mainfest.json

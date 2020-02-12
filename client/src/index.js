@@ -8,6 +8,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
+import * as serviceWorker from "./service-worker";
 import "./index.css";
 
 import persistedRedcuer from "./store/rootReducer";
@@ -46,3 +47,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+serviceWorker.unregister();
