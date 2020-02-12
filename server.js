@@ -21,10 +21,6 @@ app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 port = process.env.PORT || 5000;
 
-//service-workers
-app.get("/service-worker.js", (req, res) => {
-  res.sendfile(path.resolve(__dirname, "..", "build", "service-worker.js"));
-});
 //routes
 app.post("/payment", async (req, res) => {
   const body = {
@@ -51,4 +47,9 @@ if (process.env.NODE_ENV === "production") {
 
 app.listen(port, () => {
   console.log("Server running on port " + port);
+});
+
+//service-workers
+app.get("/service-worker.js", (req, res) => {
+  res.sendfile(path.resolve(__dirname, "client/build", "service-worker.js"));
 });
