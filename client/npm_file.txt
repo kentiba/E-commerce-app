@@ -14,3 +14,10 @@ add this so react knows to which server it should request
 serviceWorker
 https -- npm install express-sslify
 mainfest.json
+
+---TESTING---
+if tests dont work --> install react-addons-test-utils
+to look at coverage  npm test -- --coverage
+
+to mock redux store install  npm i --save-dev redux-mock-store
+nock is a library for asyc testing

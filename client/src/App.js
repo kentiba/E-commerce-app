@@ -9,6 +9,7 @@ import "./App.css";
 
 import Header from "./components/header/header.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
+import paymentSuccessfullPage from "./pages/paymentSuccessfullPage/paymentSuccessfullPage.component";
 //lazy loading -- to prevent downloading all files when the user navigate only to landing page
 const HomePage = lazy(() => import("./pages/homepage/homepage.component"));
 const ShopPage = lazy(() => import("./pages/shop/shop.component"));
@@ -39,6 +40,7 @@ const App = ({ checkUserSession, currentUser }) => {
               component={CollectionPage}
             />
             <Route exact path="/checkout" component={CheckoutPage} />
+            <Route exact path="/done" component={paymentSuccessfullPage} />
             <Route
               exact
               path="/authentication"

@@ -1,2 +1,2 @@
 mobile responsivness
-contact page
+clear cart after order and send back to thank you page

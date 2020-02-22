@@ -51,7 +51,9 @@ const SignIn = ({ googleSigninStart, emailSigninStart }) => {
           handleChange={handleChange}
         />
         <div className="buttons">
-          <CustomButton type="submit">Sign in </CustomButton>
+          <CustomButton type="submit" className="button">
+            Sign in{" "}
+          </CustomButton>
           <CustomButton
             type="button"
             isGoogleSignIn

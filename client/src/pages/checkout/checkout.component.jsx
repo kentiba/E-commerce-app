@@ -7,7 +7,7 @@ import {
   selectCartTotal
 } from "../../store/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-import StripeCheckoutButoon from "../../components/stripe-button/stripe-button.component";
+import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
 
 const checkoutPage = ({ cartItems, totalPrice }) => {
   return (
@@ -42,7 +42,7 @@ const checkoutPage = ({ cartItems, totalPrice }) => {
         <br />
         4242 4242 4242 4242 - Exp : 01/23 - CVV: 123
       </div>
-      <StripeCheckoutButoon price={totalPrice} />
+      <StripeCheckoutButton price={totalPrice} />
     </div>
   );
 };

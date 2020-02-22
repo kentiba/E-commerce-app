@@ -1,9 +1,12 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import axios from "axios";
+import { clearCart } from "../../store/cart/cart.actions";
 import "./stripe-button.styles.scss";
 
-const stripeCheckoutButoon = ({ price }) => {
+const stripeCheckoutButton = ({ price, history, clearCart }) => {
   //stripe requires that prices should be in cents
   const priceForStripe = price * 100;
   const publishableKey = "pk_test_vbCT19MHvzmw2rkhKKpXjOTD";
@@ -17,7 +20,8 @@ const stripeCheckoutButoon = ({ price }) => {
       }
     })
       .then(res => {
-        alert("Payment successful!");
+        clearCart();
+        history.push("/done");
       })
       .catch(err => {
         console.log(err);
@@ -43,4 +47,10 @@ const stripeCheckoutButoon = ({ price }) => {
   );
 };
 
-export default stripeCheckoutButoon;
+const mapDispatchToProps = dispatch => ({
+  clearCart: () => dispatch(clearCart())
+});
+
+export default withRouter(
+  connect(null, mapDispatchToProps)(stripeCheckoutButton)
+);
