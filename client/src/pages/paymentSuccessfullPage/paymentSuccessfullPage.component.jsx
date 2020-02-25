@@ -7,7 +7,7 @@ const paymentSuccessfullPage = ({ history }) => {
     <div className="payment-success">
       <h1>
         Thank you for shopping from our store! We have recieved your order and
-        we will contact you soon for further information
+        will contact you soon for further information
       </h1>
       <CustomButton onClick={() => history.push("/")}>
         Back to Home Page
